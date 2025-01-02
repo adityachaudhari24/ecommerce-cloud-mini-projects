@@ -48,17 +48,17 @@ Best For: Applications with extensive scalability and flexibility needs.
 **Re-build**: Recreate the application from scratch with cloud-native principles.
 Best For: Legacy systems too rigid for other approaches.
 
-Goal in this repository is to provide the practical ready to use solutions which can be use as a reference for relevant part of the migration/ implementation project.
+Goal in this repository is NOT to provide end to end migration path however to provide the practical ready to use solutions which can be used as a reference for relevant part of the migration/ implementation project.
 
 
 
 
-# Planned Projects
-Each project includes:
-Architecture diagrams
-Terraform scripts (where applicable)
-Demo code examples
-AWS service usage examples
+# Planned Projects \
+Each project includes: 
+Architecture diagrams \
+Terraform scripts (where applicable) \
+Demo code examples \
+AWS service usage examples \
 
 
 ## Cloud-Native E-Commerce Use Cases
@@ -79,6 +79,7 @@ AWS Lambda: For serverless processing of order updates.
 **Outcome:** \
 Reduces coupling between services, enabling independent scaling and easier feature additions.
 
+
 ### 2. Dynamic Product Recommendation Engine
 **Use Case:** \
 Build a scalable, cloud-native product recommendation system to enhance user experience and boost sales.
@@ -92,6 +93,8 @@ Amazon SageMaker: For training and deploying machine learning models. \
 AWS API Gateway: For real-time integration with the recommendation engine. \
 
 **Outcome:**
+Improves conversion rates and enhances the customer shopping experience.
+
 
 ### 3. Serverless Image Optimization for Product Media
 **Use Case:** \
@@ -108,6 +111,7 @@ Amazon CloudFront: To serve images globally via a CDN.
 **Outcome:** \
 Enhances website performance and ensures consistent user experience across devices.
 
+
 ### 4. Real-Time Inventory Management System
 **Use Case:** \
 Migrate inventory tracking to a cloud-native architecture to support high-traffic events like flash sales.
@@ -122,6 +126,7 @@ AWS AppSync: To enable real-time GraphQL queries for inventory data. \
 
 **Outcome:** \
 Prevents overselling, improves performance, and ensures consistency across platforms.
+
 
 ### 5. Secure and Scalable Payment Processing Gateway
 **Use Case:** \ 
