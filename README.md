@@ -48,7 +48,7 @@ Best For: Applications with extensive scalability and flexibility needs.
 **Re-build**: Recreate the application from scratch with cloud-native principles.
 Best For: Legacy systems too rigid for other approaches.
 
-Goal in this repository is to provide practical ready to use solutions which can be use as a reference for some part of any of the above migration patterns.
+Goal in this repository is to provide the practical ready to use solutions which can be use as a reference for relevant part of the migration/ implementation project.
 
 
 
