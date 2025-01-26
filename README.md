@@ -21,6 +21,7 @@ Each project includes:
 - Relevant links/explanations to support concept understanding
 
 
+
 ## E-Commerce Use Cases which are planned to be covered in this repository:
 
 ### 1. Serverless contact form
