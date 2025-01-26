@@ -9,7 +9,6 @@ This repository provides ready-to-use mini projects, POVs, and MVP solutions foc
 The goal is to provide a reference infrastructure architecture for e-commerce businesses looking to migrate to cloud architectures or build new solutions on the cloud.
 
 
-## Planned Projects
 Each project includes:
 - Detailed use case description
 - Solution architecture
@@ -24,7 +23,7 @@ Each project includes:
 
 ## E-Commerce Use Cases which are planned to be covered in this repository:
 
-### 1. Serverless contact form
+## PROJECT 1: Serverless contact form
 
 **Scenario:** \
 The startup e-commerce website currently lacks an efficient way to handle customer inquiries.
