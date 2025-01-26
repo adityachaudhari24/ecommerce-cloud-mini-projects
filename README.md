@@ -1,159 +1,65 @@
-# Cloud-Native E-Commerce Migration Patterns
+# Ecommerce cloud mini projects
 
 
 # Repository Purpose
 
-This repository provides ready-to-use solutions for migrating legacy e-commerce applications to cloud-native architectures, 
-It demonstrates practical implementation patterns, focusing on AWS services with a cloud-agnostic approach when possible.
+
+This repository provides ready-to-use mini projects, POVs, and MVP solutions focusing on e-commerce use cases. Cloud computing offers numerous benefits for e-commerce businesses, including scalability, high availability, cost optimization, high agility, and quick time to market. This repository provides practical examples of cloud-native solutions for common e-commerce use cases, such as order processing, inventory management, event-driven scenarios, payment processing, and many more.
+
+The goal is to provide a reference infrastructure architecture for e-commerce businesses looking to migrate to cloud architectures or build new solutions on the cloud.
 
 
-
-# Why Cloud-Native?
-E-commerce businesses, whether small, mid-sized, or large, face distinct challenges:
-
-**Small Businesses**: High costs and resource demands of SaaS/PaaS.
-
-**Mid-Sized Businesses**: Balancing customization, integration, and cost-performance trade-offs.
-
-**Large Enterprises**: Complexity in scaling, global rollouts, and maintaining integrations.
-
-Cloud-native architectures enable:
-Reduced vendor lock-in
-Improved scalability and high availability
-Faster innovation and time-to-market
-Optimized costs
+## Planned Projects
+Each project includes:
+- Detailed use case description
+- Solution architecture
+- Key components and services used
+- Implementation steps
+- Best practices and tips
+- Terraform scripts (where applicable)
+- Demo code examples (where applicable)
+- Relevant links/explanations to support concept understanding
 
 
+## E-Commerce Use Cases which are planned to be covered in this repository:
 
-
-# Patterns for Migration
-Migrating legacy e-commerce systems to cloud-native solutions requires a systematic approach. 
-The following proven migration patterns are used to transition legacy systems to cloud-native solutions:
-
-**Strangler**: Gradually replace components of the legacy system with cloud-native services.
-Best For: Minimizing risk during migration.
-
-**Lift and Shift**: Move the application to the cloud with minimal changes.
-Best For: Quick migration when immediate benefits are required.
-
-**Re-platform**: Optimize parts of the system to leverage cloud services.
-Best For: Minor optimizations without full re-architecture.
-
-**Re-factor**: Reorganize the application to improve performance and cloud compatibility.
-Best For: Applications requiring performance improvements.
-
-**Re-architect**: Fully redesign the application for cloud-native benefits.
-Best For: Applications with extensive scalability and flexibility needs.
-
-**Re-build**: Recreate the application from scratch with cloud-native principles.
-Best For: Legacy systems too rigid for other approaches.
-
-Goal in this repository is NOT to provide end to end migration path however to provide the practical ready to use solutions which can be used as a reference for relevant part of the migration/ implementation project.
-
-
-
-
-# Planned Projects \
-Each project includes: 
-Architecture diagrams \
-Terraform scripts (where applicable) \
-Demo code examples \
-AWS service usage examples \
-
-
-## Cloud-Native E-Commerce Use Cases
-
-### 1. Event-Driven Order Processing
-**Use Case:** Decouple order processing from the main application to improve scalability and fault tolerance.
-
-**Scenario:**
-
-When a customer places an order, the system publishes an event (OrderPlaced) to an event bus.
-Downstream services (e.g., inventory management, shipping, and notifications) consume the event and process it independently.
-
-**Solution:** \
-AWS SNS: For event broadcasting. \
-AWS SQS: For downstream service queuing. \
-AWS Lambda: For serverless processing of order updates.
-
-**Outcome:** \
-Reduces coupling between services, enabling independent scaling and easier feature additions.
-
-
-### 2. Dynamic Product Recommendation Engine
-**Use Case:** \
-Build a scalable, cloud-native product recommendation system to enhance user experience and boost sales.
+### 1. Serverless contact form
 
 **Scenario:** \
-Analyze user browsing behavior to provide personalized product recommendations.\
-
-**Solution:** \
-AWS DynamoDB: To store user interaction data. \
-Amazon SageMaker: For training and deploying machine learning models. \
-AWS API Gateway: For real-time integration with the recommendation engine. \
-
-**Outcome:**
-Improves conversion rates and enhances the customer shopping experience.
+The startup e-commerce website currently lacks an efficient way to handle customer inquiries.
+When customers submit a contact form, the inquiries are not promptly addressed, leading to delayed responses and poor customer satisfaction. To improve this, the system needs to automatically send an email notification to the support team and also to the customer confirming the inquiry submission.
 
 
-### 3. Serverless Image Optimization for Product Media
-**Use Case:** \
-Optimize product images dynamically for better page load times on various devices.
+**Technical Requirement:** \
+Implement a serverless contact form for an e-commerce website to collect customer inquiries. 
+Host the form on a static website and process form submissions without server management.
 
-**Scenario:** \
-When a new product image is uploaded, create optimized versions (e.g., thumbnails, high-resolution) for different platforms.
+** Solution Architecture: ** \
+AWS S3: For hosting the static website with the contact form. \
+AWS API Gateway: To expose a REST API for form submissions. \
+AWS Lambda: To process form submissions and send email notifications. \
+Amazon SES: For sending email notifications to the support team and customers.
 
-**Solution:** \
-Amazon S3: For storing original images and optimized versions.
-AWS Lambda: Triggered on S3 upload to resize images using libraries like Sharp.
-Amazon CloudFront: To serve images globally via a CDN.
+Diagram
 
-**Outcome:** \
-Enhances website performance and ensures consistent user experience across devices.
+Explanation
 
+High level Implementation Steps
 
-### 4. Real-Time Inventory Management System
-**Use Case:** \
-Migrate inventory tracking to a cloud-native architecture to support high-traffic events like flash sales.
+Terraform scripts
 
-**Scenario:** \
-Ensure inventory levels are updated in real-time across all sales channels (website, mobile app, in-store). \
-
-**Solution:** \
-Amazon ElastiCache (Redis): For real-time inventory caching. \
-AWS DynamoDB Streams: To trigger updates in an event-driven model. \
-AWS AppSync: To enable real-time GraphQL queries for inventory data. \
-
-**Outcome:** \
-Prevents overselling, improves performance, and ensures consistency across platforms.
-
-
-### 5. Secure and Scalable Payment Processing Gateway
-**Use Case:** \ 
-Modernize the payment gateway integration for secure, scalable, and compliant transaction handling.
-
-**Scenario:** \
-Handle payments from multiple providers (e.g., Stripe, PayPal) while ensuring security and compliance. \
-**Solution:** \
-AWS API Gateway: To expose payment APIs. \
-AWS Lambda: For stateless payment validation and processing logic. \
-Amazon S3: To store transaction logs for audit and compliance. \
-AWS KMS (Key Management Service): For encrypting sensitive data. \
-**Outcome:** \
-Ensures payment reliability and security while allowing integration with multiple providers.
+conceptual understanding
 
 
 
 ## Installation
-
 Instructions for installing the project.
 
 ## Usage
-
-Instructions for using the project.
+TODO: Instructions for using the project.
 
 ## Contributing
-
-Guidelines for contributing to the project.
+If you would like to report an issue or a topic, please open an issue. If you would like to contribute, please open a pull request.
 
 ## License
+TODO: Add license information
