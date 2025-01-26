@@ -22,6 +22,11 @@ Each project includes:
 
 
 ## E-Commerce Use Cases which are planned to be covered in this repository:
+#### PROJECT 1: Serverless contact form
+#### PROJECT 2: Product Review Sentiment Analysis
+#### PROJECT 3: seller image upload to s3, image recognition, scanning and validation.
+
+
 
 ## PROJECT 1: Serverless contact form
 
