@@ -95,6 +95,12 @@ Milestones and tasks: \
     - Provide a high-level implementation guide and best practices.
     - Include relevant links and references to support concept understanding.
 
+
+Possible future improvements:
+1. use edge location for faster response for different regions. // by creating cloudfront distribution.
+2. setting up WAF firewall for security the page and created API gateways.
+3. steps for domain mapping and certificate management using aws certificate manager.
+
 ## Installation
 Instructions for installing the project.
 
