@@ -67,23 +67,24 @@ Milestones and tasks: \
 3. **Create a Lambda function to process form submissions.**
     - Write the Lambda function code to handle form submissions.
     - Create an IAM role with the necessary permissions for the Lambda function using Terraform.
-    - Deploy the Lambda function and configure the environment variables using Terraform.
 
-4. **Configure Amazon SES to send email notifications.**
-    - Verify the domain in Amazon SES.
-    - Set up DKIM and SPF for the domain.
-    - Create email templates for notifications.
-    - Update the Lambda function to send emails using Amazon SES.
+4. **Configure Amazon SES to send email notifications from Lambda.**
+    - setup simple SES emails for sending email notifications.
+    - send email to support team and customer from lambda function.
 
-5. **Test the contact form and email notifications.**
+5. ** Add user request (name,email and message) do DynamoDB.**
+    - Create a DynamoDB table to store the contact form submissions.
+    - Update the Lambda function to save the form data to the DynamoDB table.
+    - Verify that the form submissions are correctly stored in the DynamoDB table.
+
+6. **Test end to end**
     - Submit test inquiries through the contact form.
-    - Verify that the inquiries are processed correctly.
+    - Verify the data in the DynamoDB table.
     - Check that email notifications are sent to the support team and customers.
 
-6. **Deployment and monitoring.**
-    - Deploy the infrastructure using Terraform.
+7. **monitoring and logging.**
     - Set up monitoring and logging for the Lambda function and API Gateway using Terraform.
-    - Configure alerts for any errors or issues using Terraform.
+    - Configure alerts for any errors or issues using Terraform. (keep it simple for now)
 
 7. **Best practices and tips.**
     - Follow security best practices for AWS resources.

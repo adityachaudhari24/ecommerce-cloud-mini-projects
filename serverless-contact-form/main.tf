@@ -239,6 +239,8 @@ resource "aws_lambda_function" "contact_form_lambda" {
     subnet_ids = [aws_subnet.private.id]
     security_group_ids = [aws_security_group.lambda_sg.id]
   }
+
+  depends_on = [aws_iam_role.lambda_exec,aws_security_group.lambda_sg]
 }
 
 # Security Group for Lambda
@@ -272,6 +274,7 @@ resource "aws_lambda_permission" "apigw_invoke_lambda" {
   principal     = "apigateway.amazonaws.com"
 
   source_arn = "${aws_api_gateway_rest_api.contact_form_api.execution_arn}/*/*"
+  depends_on = [aws_api_gateway_rest_api.contact_form_api]
 }
 
 //////////////////////////////////////////////////
