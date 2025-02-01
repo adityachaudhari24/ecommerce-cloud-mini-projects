@@ -53,17 +53,28 @@ resource "aws_s3_bucket_policy" "allow_public_read" {
         Action    = "s3:GetObject"
         Resource = "${aws_s3_bucket.contact_form.arn}/*"
         //add condition to secureTransport as true by this this we only allow HTTPS traffic
-        Condition = {
-          Bool = {
-            "aws:SecureTransport" = "true"
-          }
-        }
+        # Condition = {
+        #   Bool = {
+        #     "aws:SecureTransport" = "true"
+        #   }
+        # }
       }
     ]
   })
 }
 
+// Adding CORS to S3 bucket
+resource "aws_s3_bucket_cors_configuration" "contact_form_cors" {
+  bucket = aws_s3_bucket.contact_form.id
 
+  cors_rule {
+    allowed_headers = ["*"]
+    allowed_methods = ["POST"]
+    allowed_origins = [aws_api_gateway_deployment.contact_form_deploy.invoke_url]
+    expose_headers  = []
+    max_age_seconds = 3000
+  }
+}
 
 # ------------------------- API Gateway Configuration -------------------------
 // Step 1: Create an api gateway rest api
@@ -213,7 +224,7 @@ resource "aws_lambda_function" "contact_form" {
   function_name    = "contactFormHandler"
   runtime         = "nodejs18.x"
   role            = aws_iam_role.lambda_exec.arn
-  handler         = "lambda_function.handler"
+  handler         = "index.handler"
   filename        = "lambda/lambda.zip"
   source_code_hash = filebase64sha256("lambda/lambda.zip")
 
@@ -249,6 +260,13 @@ resource "aws_iam_role" "lambda_exec" {
       }
     ]
   })
+}
+
+// this
+resource "aws_iam_policy_attachment" "lambda_exec_policy" {
+  name       = "lambda_exec_policy"
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+  roles      = [aws_iam_role.lambda_exec.name]
 }
 
 resource "aws_iam_policy" "lambda_policy" {
@@ -289,7 +307,7 @@ resource "aws_ses_email_identity" "customer_email" {
 
 
 resource "local_file" "index_html" {
-  content  = templatefile("${path.module}/index.html.tpl", { api_gateway_url = aws_api_gateway_deployment.contact_form_deploy.invoke_url })
+  content  = templatefile("${path.module}/index.html.tpl", { api_gateway_stage_invoke_url = "${aws_api_gateway_stage.contact_form_stage.invoke_url}/submitContactForm" })
   filename = "${path.module}/index.html"
 }
 
@@ -298,6 +316,10 @@ resource "local_file" "index_html" {
 
 output "api_gateway_invoke_url" {
   value = aws_api_gateway_deployment.contact_form_deploy.invoke_url
+}
+
+output "api_gateway_stage_invoke_url" {
+  value = aws_api_gateway_stage.contact_form_stage.invoke_url
 }
 
 output "website_url" {
@@ -531,3 +553,7 @@ output "api_url" {
 #     "method.response.header.Access-Control-Allow-Origin" = "'*'"
 #   }
 # }
+
+
+// references
+//https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html

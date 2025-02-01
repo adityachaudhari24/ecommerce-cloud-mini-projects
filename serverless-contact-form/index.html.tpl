@@ -31,7 +31,7 @@
 </head>
 <body>
 <h1>Contact Us</h1>
-<form name="contactForm" action="${api_gateway_url}submitContactForm" onsubmit="handleSubmit(event)" method="post">
+<form name="contactForm" action="${api_gateway_stage_invoke_url}" onsubmit="handleSubmit(event)" method="post">
     <label for="name">Name:</label><br>
     <input type="text" id="name" name="name"><br>
     <label for="email">Email:</label><br>
